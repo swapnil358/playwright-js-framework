@@ -6,7 +6,7 @@ import { pageFixture } from "./pageFixture";
 let browser: Browser;
 let context: BrowserContext;
 BeforeAll(async function () {
-  browser = await chromium.launch({ headless: false });
+  browser = await chromium.launch({ headless: true });
 })
 
 Before(async function () {
@@ -25,11 +25,11 @@ Before(async function () {
 
 
 After(async function ({pickle, result}) {
-  console.log(result?.status);
+  console.log(pickle.name +":" +result?.status);
   
   //screenshot
   if (result?.status == Status.FAILED) {
-    const screesnhot = await pageFixture.page.screenshot({ path: `./test-result/screenshots/${pickle.name}.png`, type: "png" });
+    const screesnhot = await pageFixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" });
     await this.attach(screesnhot, "image/png");
   }
 
