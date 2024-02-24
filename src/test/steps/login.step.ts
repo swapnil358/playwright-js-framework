@@ -8,6 +8,7 @@ setDefaultTimeout(60 * 1000 * 2)
 
 Given("User navigates to the application", async function () {
   await pageFixture.page.goto(process.env.BASEURL);
+  pageFixture.logger.info("******Navigated to application")
 });
 
 Given("User click on the login link", async function () {
@@ -25,7 +26,7 @@ Given("User enter the password as {string}", async function (password) {
 When("User click on the login button", async function () {
   await pageFixture.page.locator("button[color='primary']").click();
   await pageFixture.page.waitForLoadState();
-  //pageFixture.logger.info("Waiting for 2 seconds")
+  pageFixture.logger.info("****Waiting for 2 seconds")
   await pageFixture.page.waitForTimeout(2000);
 });
 
@@ -34,7 +35,7 @@ Then("Login should be success", async function () {
   await expect(user).toBeVisible();
   const userName = await user.textContent();
   console.log("Username: " + userName);
-  //pageFixture.logger.info("Username: " + userName);
+  pageFixture.logger.info("*****Username: " + userName);
 });
 
 When("Login should fail", async function () {
