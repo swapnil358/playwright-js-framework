@@ -10,6 +10,7 @@ Feature: User Authentication tests
     When User click on the login button
     Then Login should be success
 
+@test
   Scenario: Login should not be success
     Given User enter the username as "koushik"
     Given User enter the password as "Passkoushik"
