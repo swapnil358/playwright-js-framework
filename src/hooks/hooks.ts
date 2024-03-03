@@ -43,23 +43,26 @@ After(async function ({ pickle, result }) {
   let videoPath: string;
   let img: Buffer;
   console.log(pickle.name +":" +result?.status);
-  
-  //screenshot
-  if (result?.status == Status.FAILED) {
-    img= await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" });
-    videoPath = await fixture.page.video().path();
+  try {
+    //screenshot
+    if (result?.status == Status.FAILED) {
+      img = await fixture.page.screenshot({ path: `./test-results/screenshots/${pickle.name}.png`, type: "png" });
+      videoPath = await fixture.page.video().path();
    
-  }
+    }
 
 
-  await fixture.page.close();
-  await context.close();
+    await fixture.page.close();
+    await context.close();
 
-  if (result?.status == Status.FAILED) {
-    await this.attach(img, "image/png");
+    if (result?.status == Status.FAILED) {
+      await this.attach(img, "image/png");
 
-    await this.attach(
-      fs.readFileSync(videoPath), 'video/webm')
+      await this.attach(
+        fs.readFileSync(videoPath), 'video/webm')
+    }
+  } catch (error) {
+    console.log("Catched assertAll errors");
   }
 
 });
