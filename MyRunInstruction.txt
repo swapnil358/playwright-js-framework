@@ -11,6 +11,8 @@ To run from CMD:
 npm run test --TAGS="@test" --BROWSER="chrome" --THREAD=2
 npm run test --TAGS="@test or @test2" --BROWSER="chrome" --THREAD=2
 
+npm run test --TAGS="@test or @test2" --BROWSER="chrome" --THREAD=1 --RETRY=1 --retryTagFilter="@flaky"
+
 
 =========playright runner commands=================
 Run all the tests
