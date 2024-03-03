@@ -23,7 +23,9 @@ module.exports = {
                 "json:test-results/cucumber-report.json",
                 "rerun:@rerun.txt"
             ],
-            parallel: Number(process.env.npm_config_THREAD) || 2
+        parallel: Number(process.env.npm_config_THREAD) || 5,
+        retry: Number(process.env.npm_config_RETRY) || 0,
+        retryTagFilter: process.env.npm_config_retryTagFilter
             
         },
         rerun:{
