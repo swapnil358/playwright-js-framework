@@ -6,14 +6,14 @@ Feature: User Authentication tests
 
 @test2 
   Scenario: Login should be success
-    And User enter the username as "ortoni1111"
+    And User enter the username as "ortoni11"
     And User enter the password as "Pass1234"
     When User click on the login button
     Then Login should be success
 
 @test @flaky
   Scenario: Login should not be success
-    Given User enter the username as "koushik"
-    Given User enter the password as "Passkoushik"
+    Given User enter the username as "robert1"
+    Given User enter the password as "Password123"
     When User click on the login button
     But Login should fail

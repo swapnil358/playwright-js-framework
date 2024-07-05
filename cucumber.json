@@ -20,7 +20,9 @@
         "format":[
             "html:test-results/cucumber-report.html",
             "json:test-results/cucumber-report.json",
-            "rerun:@rerun.txt"
+            "rerun:@rerun.txt",
+            "summary",
+           "progress-bar"
         ],
         "parallel": 2
         

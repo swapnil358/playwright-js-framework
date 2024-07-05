@@ -7,12 +7,12 @@ setDefaultTimeout(60 * 1000 * 2)
 
 
 Given("User navigates to the application", async function () {
-  await fixture.page.goto(process.env.BASEURL);
+  await fixture.page.goto(process.env.BASEURL || process.env.npm_config_BASEURL);
   fixture.logger.info("******Navigated to application")
 });
 
 Given("User click on the login link", async function () {
-  await fixture.page.locator("//span[text()='Login']").click();
+  await fixture.page.locator("'Login'").first().click();
 });
 
 Given("User enter the username as {string}", async function (username) {
