@@ -3,7 +3,9 @@
         "typeRoots": [
             "./node_modules/@types",
             "src/helper/types"
-        ]
+        ],
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
     }
 
 }
